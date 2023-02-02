@@ -14,7 +14,8 @@ let DB_NAME = process.env.DB_NAME;
 let DB_USER = process.env.DB_USER;
 let DB_PASS = process.env.DB_PASS;
 let DB_URL = process.env.DB_URL
-let db_url = "mongodb+srv://" + DB_USER + ":" + DB_PASS + "@starwarsapp.nbk2k5v.mongodb.net/" + DB_NAME;
+let db_url = "mongodb+srv://" + DB_USER + ":" + DB_PASS + 
+"@starwars.8x0axlq.mongodb.net/" + DB_NAME;
 console.log(db_url);
 let option = {
     maxPoolSize: 10,
