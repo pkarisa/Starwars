@@ -14,8 +14,7 @@ let DB_NAME = process.env.DB_NAME;
 let DB_USER = process.env.DB_USER;
 let DB_PASS = process.env.DB_PASS;
 let DB_URL = process.env.DB_URL
-let db_url = "mongodb+srv://" + DB_USER + ":" + DB_PASS + 
-"@starwars.8x0axlq.mongodb.net/" + DB_NAME;
+let db_url = "mongodb+srv://pendo:Amari2016@starwars.8x0axlq.mongodb.net/Starwars"
 console.log(db_url);
 let option = {
     maxPoolSize: 10,
@@ -56,5 +55,23 @@ app.post('/quotes', (req, res) => {
 
     let newUser = new User(user);
     newUser.save();
-    res.redirect('/');
+    res.redirect('/login');
+})
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/login.html')
+
+    // do something here
+})
+app.post('/login', (req, res) => {
+    const myEmail = req.body.email
+    const myPassword = req.body.pass
+    User.findOne({email:myEmail},(error, result)=> {
+        if (error){res.send (error.message) }
+        else {
+            if (result.password == myPassword){res.send ("you've login");}
+            else {res.send ("wrongPassword");}
+        }
+        
+    })
+
 })
